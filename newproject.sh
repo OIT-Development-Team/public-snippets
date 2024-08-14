@@ -3,23 +3,23 @@
 
 #Pull down github action file
 if [ ! -f .github/workflows/build.yaml ]; then
-       curl https://gist.githubusercontent.com/jbstowe/c2c7b4c55b8a10bb33f323984424e495/raw/5edc19958b27e97227df4c411404e296126aa560/build.yml --create-dirs -o .github/workflows/build.yaml
+       curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/v8.3.0/build.yaml --create-dirs -o .github/workflows/build.yaml
 fi
 
-#Pull down docker-compose.yml file
-if [ ! -f docker-compose.yml ]; then
-       curl https://gist.githubusercontent.com/jbstowe/a406fa3c2ad4e04b284d00adca79c975/raw/fac86c973c444bb92a9eb0b4cfe5409ebfbfb141/docker-compose.yml --create-dirs -o docker-compose.yml
+#Pull down docker-compose.yaml file
+if [ ! -f docker-compose.yaml ]; then
+       curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/v8.3.0/docker-compose.yaml --create-dirs -o docker-compose.yaml
 fi
 
 #Pull down deploy-plan.json file
 if [ ! -f deploy-plan.json ]; then
-       curl {{ url for new deploy-plan }} --create-dirs -o deploy-plan.json
+       curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/v8.3.0/deploy-plan.json --create-dirs -o deploy-plan.json
 fi
 
 #give developers a script to create a new laravel project if a laravel app is not detected
 if [ ! -d app ]; then
        if [ ! -f new-laravel-app.sh ]; then
-              curl {{ url for new new-laravel-app.sh }} --create-dirs -o new-laravel-app.sh
+              curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/v8.3.0/new-laravel-app.sh --create-dirs -o new-laravel-app.sh
               chmod +x new-laravel-app.sh
        fi
 fi
