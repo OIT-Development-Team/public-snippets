@@ -15,7 +15,7 @@ if [ ! -d app ]; then
         echo "Setting trusted proxies..."
 
         # Define the new trustProxies configuration with proper indentation
-        NEW_TRUST_PROXIES="        \$middleware->trustProxies(at: [\n            \"10.42.0.0/16\",\n            \"10.8.0.0/16\",\n            \"10.1.0.0/16\"\n        ]);"
+        NEW_TRUST_PROXIES="\t\t\$middleware->trustProxies(at: [\n\t\t\t\"10.42.0.0/16\",\n\t\t\t\"10.8.0.0/16\",\n\t\t\t\"10.1.0.0/16\"\n\t\t]);"
 
         # Remove the existing trustProxies configuration if it exists
         if grep -q '\$middleware->trustProxies(at:' "$APP_FILE"; then
@@ -25,7 +25,7 @@ if [ ! -d app ]; then
 
         # Add the new trustProxies configuration
         sed -i "/->withMiddleware(function (Middleware \$middleware) {/a\\
-        $NEW_TRUST_PROXIES" "$APP_FILE"
+$NEW_TRUST_PROXIES" "$APP_FILE"
         echo "Added trustProxies configuration to bootstrap/app.php."
     else
         echo "App configuration file bootstrap/app.php not found!"
