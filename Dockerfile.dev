@@ -5,7 +5,7 @@
 #* script to generate this file
 #***********************************************
 
-FROM uadevelopment/php:8.3-latest
+FROM ghcr.io/oit-development-team/php:8.3-latest
 
 ENV SESSION_SECURE_COOKIE=true
 
