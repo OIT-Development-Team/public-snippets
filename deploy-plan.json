@@ -5,7 +5,7 @@
 		"npm_run_command": "npm run build"
 	},
 	"image": {
-		"name": "uadevelopment/php",
+		"name": "ghcr.io/oit-development-team/php",
 		"tag": "8.3-latest",
 		"databases": [],
 		"os_modules": [],
