@@ -7,7 +7,9 @@
 	"image": {
 		"name": "uadevelopment/php",
 		"tag": "8.3-latest",
-		"databases": [],
+		"databases": [
+			"oracle"
+		],
 		"os_modules": [],
 		"php_extensions": [],
 		"max_file_size": "20",
