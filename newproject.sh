@@ -24,9 +24,7 @@ if [ ! -d app ]; then
        fi
 fi
 
-if [ ! -d Dockerfile.dev ]; then
-       curl -X POST -d @deploy-plan.json --header "Content-Type: application/json" -H "AUTH: $AUTH" https://build-dockerfile-api.oitapps.ua.edu/api/docker/build-dev > Dockerfile.dev
-fi
+curl -X POST -d @deploy-plan.json --header "Content-Type: application/json" -H "AUTH: $AUTH" https://build-dockerfile-api.oitapps.ua.edu/api/docker/build-dev > Dockerfile.dev
 
 #Build and run container
 docker stop app
