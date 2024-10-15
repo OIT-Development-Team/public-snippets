@@ -67,6 +67,20 @@ $NEW_TRUST_PROXIES" "$APP_FILE"
         echo "Caching configuration file not found!"
     fi
 
+    # Ensure the session configuration is updated for both new and existing projects
+    SESSION_FILE="config/session.php"
+
+    if [ -f "$SESSION_FILE" ]; then
+        echo "Updating session configuration..."
+
+        # Update 'driver' => 'file'
+        sed -i "s/'driver' =>.*/'driver' => 'file',/" "$SESSION_FILE"
+
+        echo "Session driver set to file"
+    else
+        echo "Session configuration file not found!"
+    fi
+
     # Additional configuration based on deploy-plan.json
 
     # Extract the first database in the "databases" array from deploy-plan.json
