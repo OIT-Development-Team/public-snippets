@@ -29,4 +29,10 @@ curl -X POST -d @deploy-plan.json --header "Content-Type: application/json" -H "
 #Build and run container
 docker stop app
 docker rm app
-docker-compose up -d --build
+
+#Check if "docker compose" is available; if not, use "docker-compose"
+if command -v docker compose >/dev/null 2>&1; then
+    docker compose up -d --build
+else
+    docker-compose up -d --build
+fi
