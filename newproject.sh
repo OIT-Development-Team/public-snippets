@@ -30,9 +30,19 @@ curl -X POST -d @deploy-plan.json --header "Content-Type: application/json" -H "
 docker stop app
 docker rm app
 
-#Check if "docker compose" is available; if not, use "docker-compose"
-if command -v docker compose >/dev/null 2>&1; then
-    docker compose up -d --build
+# Check for Windows by detecting 'OS' environment variable in cmd/Git Bash
+if [ "$OS" = "Windows_NT" ]; then
+    # Windows environment (cmd or Git Bash)
+    if command -v docker compose >/dev/null 2>&1; then
+        docker compose up -d --build
+    else
+        docker-compose up -d --build
+    fi
 else
-    docker-compose up -d --build
+    # Unix-like environment (Linux, macOS)
+    if command -v docker compose >/dev/null 2>&1; then
+        docker compose up -d --build
+    else
+        docker-compose up -d --build
+    fi
 fi
