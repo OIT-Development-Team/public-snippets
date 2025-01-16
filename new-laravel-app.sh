@@ -164,6 +164,9 @@ EOL
 
     echo "Updated README.md with new contents."
 
+    curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/refs/heads/master/vite.config.js -o vite.config.js
+    echo "Updated vite config"
+
 else
     echo "You already have a Laravel project!"
 fi
