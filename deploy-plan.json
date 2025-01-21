@@ -8,7 +8,7 @@
 		"name": "uadevelopment/php",
 		"tag": "8.3-latest",
 		"databases": [
-			"oracle"
+			"sqlite"
 		],
 		"os_modules": [],
 		"php_extensions": [],
