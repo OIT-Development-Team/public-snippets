@@ -164,8 +164,57 @@ EOL
 
     echo "Updated README.md with new contents."
 
+    #-------------------------------------------------------------------------------------
+
+    # Update the vite.config.js file
     curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/refs/heads/master/vite.config.js -o vite.config.js
     echo "Updated vite config"
+
+    #-------------------------------------------------------------------------------------
+
+    # Run npm install
+    npm install
+
+    #-------------------------------------------------------------------------------------
+
+    # Install Livewire
+    read -p "Install Livewire? (y/n): "  -n 1 -r install_livewire
+
+    while [[ ! "$install_livewire" =~ ^[yYnN]$ ]]; do
+        echo "\n"
+        echo "Invalid input. Please enter y or n."
+        read -p "Install Livewire? (y/n) " -n 1 -r install_livewire
+    done
+
+    if [[ "$install_livewire" == "y" || "$install_livewire" == "Y" ]]; then
+        echo "\n"
+        echo "Installing Livewire..."
+        composer require livewire/livewire
+        echo "\n"
+        echo "Livewire Installed"
+    fi
+
+    #-------------------------------------------------------------------------------------
+
+    # Install Tailwind
+    read -p "Install Tailwind? (y/n): "  -n 1 -r install_tailwind
+
+    while [[ ! "$install_tailwind" =~ ^[yYnN]$ ]]; do
+        echo "\n"
+        echo "Invalid input. Please enter y or n."
+        read -p "Install Livewire? (y/n) " -n 1 -r install_tailwind
+    done
+
+    if [[ "$install_tailwind" == "y" || "$install_tailwind" == "Y" ]]; then
+        echo "\n"
+        echo "Installing Tailwind..."
+        npm install -D tailwindcss postcss autoprefixer
+        npx tailwindcss init -p
+        curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/refs/heads/master/tailwind.config.js -o tailwind.config.js
+        echo "\n"
+        echo "Installed Tailwind"
+    fi
+
 
 else
     echo "You already have a Laravel project!"
