@@ -46,3 +46,6 @@ else
         docker-compose up -d --build
     fi
 fi
+
+# Run npm run dev in the BG
+docker exec -d app npm run dev
