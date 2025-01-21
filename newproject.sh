@@ -67,6 +67,7 @@ fi
 # fi
 
 # run npm run dev in the bg if theres an app folder and package-lock.json (npm install has been ran)
-if [ -d app ] && [ -d package-lock.json ]; then
+# if [ -d app ] && [ -d package-lock.json ]; then
+if [ -d app ]; then
     docker exec -d app npm run dev
 fi
