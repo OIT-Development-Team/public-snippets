@@ -203,16 +203,15 @@ EOL
     #-------------------------------------------------------------------------------------
 
     # Run npm install
+    echo "Running npm install..."
     npm install
 
     #-------------------------------------------------------------------------------------
 
     # Install Livewire
     if $livewire; then
-        echo "\n"
         echo "Installing Livewire..."
         composer require livewire/livewire
-        echo "\n"
         echo "Livewire Installed"
     fi
 
@@ -220,15 +219,18 @@ EOL
 
     # Install Tailwind
     if $tailwind; then
-        echo "\n"
         echo "Installing Tailwind..."
         npm install -D tailwindcss postcss autoprefixer
         npx tailwindcss init -p
         curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/refs/heads/master/tailwind.config.js -o tailwind.config.js
-        echo "\n"
         echo "Installed Tailwind"
     fi
 
+    #-------------------------------------------------------------------------------------
+
+    # Run npm run dev in the background
+    echo "Attempting to run npm run dev in the background..."
+    npm run dev &
 
 else
     echo "You already have a Laravel project!"
