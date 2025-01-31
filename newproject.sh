@@ -1,6 +1,24 @@
 #!/bin/sh
 #Version 1.8
 
+
+# Set default values for boolean options
+provision-app=false
+
+# Parse command-line arguments
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --new)
+      provision_app=true
+      shift
+    ;;
+    *)
+      echo "Unknown option: $1"
+      exit 1
+    ;;
+  esac
+done
+
 #Pull down github action file
 if [ ! -f .github/workflows/build.yaml ]; then
        curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/master/build.yaml --create-dirs -o .github/workflows/build.yaml
@@ -65,6 +83,12 @@ fi
 #         rm new-laravel-app.sh
 #     fi
 # fi
+
+if provision_app; then
+    echo "Creating New Laravel Application!"
+    ./new-laravel-app.sh
+    rm new-laravel-app.sh
+fi
 
 # run npm run dev in the bg if theres an app folder and package-lock.json (npm install has been ran)
 # if [ -d app ] && [ -d package-lock.json ]; then
