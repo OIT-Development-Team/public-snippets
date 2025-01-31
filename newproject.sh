@@ -84,7 +84,7 @@ fi
 #     fi
 # fi
 
-if provision_app; then
+if $provision_app; then
     echo "Creating New Laravel Application!"
     ./new-laravel-app.sh
     rm new-laravel-app.sh
