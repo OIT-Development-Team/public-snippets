@@ -68,6 +68,7 @@ fi
 
 # run npm run dev in the bg if theres an app folder and package-lock.json (npm install has been ran)
 # if [ -d app ] && [ -d package-lock.json ]; then
+echo "Checking to see if we can npm run dev in background..."
 if [ -d app ]; then
     echo "Running npm run dev in the background..."
     docker exec -d app npm run dev
