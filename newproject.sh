@@ -3,7 +3,7 @@
 
 
 # Set default values for boolean options
-provision-app=false
+provision_app=false
 
 # Parse command-line arguments
 while [[ $# -gt 0 ]]; do
