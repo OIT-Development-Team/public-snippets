@@ -1,5 +1,35 @@
 #!/bin/sh
 
+# Set default values for boolean options
+livewire=true
+tailwind=true
+
+# Parse command-line arguments
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --livewire)
+      livewire=true
+      shift
+    ;;
+    --no-livewire)
+      livewire=false
+      shift
+    ;;
+    --tailwind)
+      tailwind=true
+      shift
+    ;;
+    --no-tailwind)
+      tailwind=false
+      shift
+    ;;
+    *)
+      echo "Unknown option: $1"
+      exit 1
+    ;;
+  esac
+done
+
 # Check if the 'app' directory exists
 if [ ! -d app ]; then
     export COMPOSER_PROCESS_TIMEOUT=600
@@ -178,15 +208,7 @@ EOL
     #-------------------------------------------------------------------------------------
 
     # Install Livewire
-    read -p "Install Livewire? (y/n): "  -n 1 -r install_livewire
-
-    while [[ ! "$install_livewire" =~ ^[yYnN]$ ]]; do
-        echo "\n"
-        echo "Invalid input. Please enter y or n."
-        read -p "Install Livewire? (y/n) " -n 1 -r install_livewire
-    done
-
-    if [[ "$install_livewire" == "y" || "$install_livewire" == "Y" ]]; then
+    if $livewire; then
         echo "\n"
         echo "Installing Livewire..."
         composer require livewire/livewire
@@ -197,15 +219,7 @@ EOL
     #-------------------------------------------------------------------------------------
 
     # Install Tailwind
-    read -p "Install Tailwind? (y/n): "  -n 1 -r install_tailwind
-
-    while [[ ! "$install_tailwind" =~ ^[yYnN]$ ]]; do
-        echo "\n"
-        echo "Invalid input. Please enter y or n."
-        read -p "Install Livewire? (y/n) " -n 1 -r install_tailwind
-    done
-
-    if [[ "$install_tailwind" == "y" || "$install_tailwind" == "Y" ]]; then
+    if $tailwind; then
         echo "\n"
         echo "Installing Tailwind..."
         npm install -D tailwindcss postcss autoprefixer
@@ -219,3 +233,4 @@ EOL
 else
     echo "You already have a Laravel project!"
 fi
+
