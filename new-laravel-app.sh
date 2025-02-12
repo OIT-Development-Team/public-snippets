@@ -220,9 +220,10 @@ EOL
     # Install Tailwind
     if $tailwind; then
         echo "Installing Tailwind..."
-        npm install -D tailwindcss postcss autoprefixer
-        npx tailwindcss init -p
-        curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/refs/heads/master/tailwind.config.js -o tailwind.config.js
+        # npm install -D tailwindcss postcss autoprefixer
+        # npx tailwindcss init -p
+        # curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/refs/heads/master/tailwind.config.js -o tailwind.config.js
+        npm install tailwindcss @tailwindcss/vite
         echo "Installed Tailwind"
     fi
 
