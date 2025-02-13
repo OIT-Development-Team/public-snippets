@@ -1,17 +1,5 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-    --color-crimson: '#9e1c32';
-    --color-crimson-50: '#ff6262';
-    --color-crimson-100: '#FF3D3D';
-    --color-crimson-200: '#FF1414';
-    --color-crimson-300: '#EB0000';
-    --color-crimson-400: '#C20000';
-    --color-crimson-500: '#9e1c32';
-    --color-crimson-600: '#610000';
-    --color-crimson-700: '#290000';
-    --color-crimson-800: '#000000';
-    --color-crimson-900: '#000000';
-
-    --color-ua-gray: '#eeeeee';
-}
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
