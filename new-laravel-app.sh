@@ -223,6 +223,7 @@ EOL
         npm install -D tailwindcss postcss autoprefixer
         npx tailwindcss init -p
         curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/refs/heads/master/tailwind.config.js -o tailwind.config.js
+        curl https://raw.githubusercontent.com/OIT-Development-Team/public-deploy-scripts/refs/heads/master/app.css -o resources/css/app.css
         echo "Installed Tailwind"
     fi
 
