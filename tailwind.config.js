@@ -2,6 +2,7 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'selector',
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
@@ -31,6 +32,13 @@ export default {
                     '800': '#000000',
                     '900': '#000000'
                 },
+
+                'dm': {
+                    '100': '#d1d7e0',
+                    '300': '#262c36',
+                    '400': '#212830',
+                    '700': '#151b23',
+                }
             }
         },
     },
